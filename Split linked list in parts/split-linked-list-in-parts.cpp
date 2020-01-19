@@ -27,6 +27,11 @@ public:
 
       copy = root;
 
+      /*
+        * If number of partitions is greater than,
+        * number of items in the list, then make a 
+        * list per each item
+      **/
       if (length < k) {
         while (copy != NULL) {
           result[index] = copy;
@@ -36,6 +41,15 @@ public:
           index++;
         }
       } else {
+        /*
+          * Else, Iterate over the list and push
+          * the list item to the vector every time
+          * the iteration is divisible by the number
+          * of parts needs to be created. Check for
+          * any remainders while creating partitions
+          * if exists, add remainders one by one until
+          * zero
+        **/
         int parts = floor(length / k);
         int remainder = length - (parts * k);
         while (copy != NULL) {
